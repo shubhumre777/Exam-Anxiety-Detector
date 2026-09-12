@@ -1,94 +1,99 @@
-import cv2
-import math
 import streamlit as st
+import cv2
+import tempfile
+import os
+import numpy as np
 from src.tracker import FaceTracker
 from src.emotion import EmotionDetector
 from src.analyzer import AnxietyAnalyzer
-from src.visualizer import generate_report 
-import time
+from src.visualizer import generate_report
 
-st.set_page_config(page_title="Anxiety Detector", layout="wide")
-st.title("Real Time Anxiety Detector")
+st.set_page_config(page_title="Exam Anxiety Detector", page_icon="🧠", layout="centered")
 
-# Changed button name to make more sense
-run_analysis = st.button("Start Camera")
+st.title("🧠 Exam Anxiety & Proctoring Detector (Video Upload)")
+st.write("Upload a recorded exam video to analyze student movement, emotions, and calculate an overall anxiety score.")
 
-col1, col2 = st.columns(2)
+# File uploader widget
+uploaded_file = st.file_uploader("Choose an exam video...", type=["mp4", "avi", "mov", "mkv"])
 
-with col1:
-    st.subheader("Live Camera Feed")
-    video_placeholder = st.empty() 
-    report_placeholder = st.empty()
+if uploaded_file is not None:
+    # Save uploaded video to a temporary file so OpenCV can read it
+    tfile = tempfile.NamedTemporaryFile(delete=False, suffix='.mp4')
+    tfile.write(uploaded_file.read())
+    video_path = tfile.name
 
-with col2:
-    st.subheader("Live Analytics")
-    score_placeholder = st.empty()
-    emotion_placeholder = st.empty()
-    fidget_placeholder = st.empty()
-
-if run_analysis:
-    cap = cv2.VideoCapture(0 , cv2.CAP_DSHOW)
-    tracker = FaceTracker()
-    emotion_detector = EmotionDetector()
-    analyzer = AnxietyAnalyzer()
+    st.video(video_path)
     
-    last_center = None
+    if st.button("🚀 Start Video Analysis", type="primary"):
+        # Initialize AI components fresh for this session
+        tracker = FaceTracker()
+        emotion_detector = EmotionDetector()
+        analyzer = AnxietyAnalyzer()
+        last_center = None
 
-    progress_bar = st.progress(0)
-    status_text = st.empty()
-    max_frames = 300
-    # Run the camera for 1000 frames
-    for frames_count in range(max_frames):
-        ret, frame = cap.read()
-        if not ret:
-            st.error("Unable to capture the webcam !!")
-            break
+        cap = cv2.VideoCapture(video_path)
+        
+        # UI placeholders for live progress during processing
+        st_frame = st.empty()
+        st_score = st.empty()
+        st_emotion = st.empty()
+        st_fidget = st.empty()
+        
+        progress_bar = st.progress(0)
+        total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+        current_frame_idx = 0
+
+        while cap.isOpened():
+            ret, frame = cap.read()
+            if not ret:
+                break
             
-        annotated_frame, face_crop, current_center = tracker.process_frame(frame)
-        
-        movement = 0
-        if current_center and last_center:
-            dx = current_center[0] - last_center[0]
-            dy = current_center[1] - last_center[1]
-            movement = math.sqrt(dx**2 + dy**2) 
-        last_center = current_center
-        
-        emotion = emotion_detector.detect(face_crop)
-        
-        analyzer.log_data(movement, emotion)
-        anxiety_score = analyzer.calculate_anxiety_score()
-        
-        # Convert color for Streamlit and update UI
-        frame_rgb = cv2.cvtColor(annotated_frame, cv2.COLOR_BGR2RGB)
-        video_placeholder.image(frame_rgb, channels="RGB", use_container_width=True)
-        
-        score_placeholder.metric("Anxiety Score", f"{anxiety_score}/100")
-        emotion_placeholder.metric("Current Emotion", emotion)
-        fidget_placeholder.metric("Fidget Speed", int(movement))
-
-        # Update the progress bar
-        progress_percentage = int(((frames_count + 1) / max_frames) * 100)
-        progress_bar.progress((frames_count + 1) / max_frames)
-        status_text.text(f"Analysis in progress... {progress_percentage}%")
+            current_frame_idx += 1
             
-    # VERY IMPORTANT: Release the webcam after the loop!
-    cap.release()
-    
-    # Clear the video box
-    video_placeholder.empty()
+            # Optional: Optimize resolution for speed
+            h, w, _ = frame.shape
+            if w > 480:
+                scale = 480 / w
+                frame = cv2.resize(frame, (int(w * scale), int(h * scale)))
 
-    status_text.text("Exam Complete! Processing data...")
-    progress_bar.empty() # Progress bar ko screen se hata do
-    
-    # Show a 3-second countdown before showing the graph
-    with st.spinner("Generating result in 3 seconds..."):
-        time.sleep(3)
-    
-    # Save data and get unique filename
-    saved_file_path = analyzer.save_log()
-    st.success(f"Exam finished! Log saved to {saved_file_path}")
+            # AI Processing Pipeline
+            annotated_frame, face_crop, current_center = tracker.process_frame(frame)
+            
+            movement = 0
+            if current_center and last_center:
+                dx, dy = current_center[0] - last_center[0], current_center[1] - last_center[1]
+                movement = int(np.sqrt(dx**2 + dy**2))
+            last_center = current_center
+            
+            emotion = emotion_detector.detect(face_crop)
+            analyzer.log_data(movement, emotion)
+            anxiety_score = analyzer.calculate_anxiety_score()
+            
+            # Update metrics on screen
+            st_score.metric("Current Anxiety Score", f"{anxiety_score}/100")
+            st_emotion.metric("Detected Emotion", emotion)
+            st_fidget.metric("Fidget Speed", movement)
+            
+            # Convert OpenCV BGR to RGB for Streamlit display (width parameter removed to prevent version errors)
+            annotated_rgb = cv2.cvtColor(annotated_frame, cv2.COLOR_BGR2RGB)
+            st_frame.image(annotated_rgb, channels="RGB")
+            
+            # Update progress bar
+            if total_frames > 0:
+                progress_bar.progress(min(current_frame_idx / total_frames, 1.0))
 
-    # Generate and show the report graph
-    generate_report(saved_file_path)
-    graph_filename = saved_file_path.replace('.csv', '.png')
-    report_placeholder.image(graph_filename, caption="Final Detected Report")
+        cap.release()
+        st.success("✅ Video Analysis Complete!")
+
+        # Generate and display final report graph
+        with st.spinner("Generating final analytical report..."):
+            saved_file_path = analyzer.save_log()
+            generate_report(saved_file_path)
+            graph_path = saved_file_path.replace('.csv', '.png')
+            
+            st.subheader("📊 Final Session Report")
+            if os.path.exists(graph_path):
+                st.image(graph_path, caption="Anxiety & Fidget Analysis Over Time")
+            
+            final_score = analyzer.calculate_anxiety_score()
+            st.info(f"🎯 **Final Exam Anxiety Score:** {final_score} / 100")

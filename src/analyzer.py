@@ -18,7 +18,11 @@ class AnxietyAnalyzer:
             'anxiety_score': 0
         }
         new_df = pd.DataFrame([new_row]) # [new_row] : Dictionary is stored in a list because want only single-single rows .
-        self.history = pd.concat([self.history, new_df], ignore_index=True)
+    
+        if self.history.empty:
+            self.history = new_df
+        else:
+            self.history = pd.concat([self.history, new_df], ignore_index=True)
             
     def calculate_anxiety_score(self):
         recent_window = self.history.tail(150) # Look at last 5 seconds (150 frames)

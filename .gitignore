@@ -1,13 +1,4 @@
-# Virtual Environments
 anxiety_env/
-venv/
-env/
-
-# Data and Logs
-data/
-*.csv
-*.png
-
-# Python Cache
 __pycache__/
+.vscode/
 *.pyc
