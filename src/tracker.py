@@ -4,18 +4,19 @@ from ultralytics import YOLO
 
 class FaceTracker:
     def __init__(self):
-        # Use standard model and handle any serialization/loading issues gracefully
-        try:
-            self.model = YOLO('yolov8n-face.pt')
-        except Exception as e:
-            print(f"Error loading YOLO model: {e}")
-            # Fallback to an alternative or handle it
-            self.model = None
+        # Build an absolute path pointing to the root directory from src/tracker.py
+        current_dir = os.path.dirname(os.path.abspath(__file__)) # points to src/
+        root_dir = os.path.dirname(current_dir) # points to project root
+        model_path = os.path.join(root_dir, 'yolov8n-face.pt')
+        
+        # Fallback check if file is in current working directory
+        if not os.path.exists(model_path):
+            model_path = 'yolov8n-face.pt'
+
+        # Load the custom face model
+        self.model = YOLO(model_path) 
 
     def process_frame(self, frame):
-        if self.model is None:
-            return frame, None, None
-            
         results = self.model(frame, verbose=False)
         annotated_frame = results[0].plot()
         boxes = results[0].boxes.xyxy.cpu().numpy()
