@@ -1,79 +1,90 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0D1117,50:172554,100:0D1117&height=210&section=header&text=EXAM%20ANXIETY%20%26%20PROCTORING%20AI&fontSize=32&fontColor=00FFFF&animation=twinkling&stroke=00FFFF&strokeWidth=1&desc=Computer%20Vision%20%7C%20Behavioral%20Analytics%20%7C%20Exam%20Monitoring&descSize=15&descColor=A0A0A0&descAlignY=65" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0D1117&height=180&section=header&text=EXAM%20ANXIETY%20%26%20PROCTORING%20AI&fontSize=31&fontColor=00E5FF&animation=fadeIn&stroke=00E5FF&strokeWidth=1&desc=Computer%20Vision%20Behavioral%20Analytics&descSize=16&descColor=9CA3AF&descAlignY=68" width="100%"/>
 
-[![🚀 Live App](https://img.shields.io/badge/🚀_LIVE_APP-Streamlit_Cloud-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://exam-anxiety-detector-su.streamlit.app/)
+<br>
+
+[![Live App](https://img.shields.io/badge/LIVE%20APP-Streamlit-00A8E8?style=for-the-badge&logo=streamlit&logoColor=white)](https://exam-anxiety-detector-su.streamlit.app/)
+[![Repository](https://img.shields.io/badge/SOURCE-GitHub-161B22?style=for-the-badge&logo=github&logoColor=white)](https://github.com/shubhumre777/Exam-Anxiety-Detector)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![YOLOv8](https://img.shields.io/badge/YOLOv8-Face_Detection-00FFFF?style=for-the-badge)](https://github.com/ultralytics/ultralytics)
+[![YOLOv8](https://img.shields.io/badge/YOLOv8-Face%20Detection-00E5FF?style=for-the-badge)](https://github.com/ultralytics/ultralytics)
 [![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)](https://pytorch.org/)
-[![MIT](https://img.shields.io/badge/License-MIT-F5C542?style=for-the-badge)](LICENSE)
+[![License](https://img.shields.io/badge/License-MIT-F5C542?style=for-the-badge)](LICENSE)
 
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=16&duration=2800&pause=900&color=00FFFF&center=true&vCenter=true&width=700&lines=Video+Analytics;YOLOv8+Face+Detection;Movement+%26+Expression+Analysis;Temporal+Anxiety+Scoring" alt="Typing Animation"/>
+<br>
+
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=15&duration=3000&pause=1000&color=00E5FF&center=true&vCenter=true&width=720&lines=YOLOv8+Face+Detection;Temporal+Movement+Analysis;Facial+Expression+Signals;Anxiety+Index+%7C+0%E2%80%93100" alt="Project capabilities"/>
 
 </div>
 
 ---
 
-## 🎯 Overview
+## Overview
 
-**Exam Anxiety & Proctoring AI** analyzes recorded exam videos using computer vision to estimate an **Anxiety Index (0–100)** from observable movement, facial-expression signals, and spatial changes over time.
+**Exam Anxiety & Proctoring AI** is a computer vision application for analyzing recorded examination videos. It combines face detection, spatial movement tracking and facial-expression signals to generate an experimental **Anxiety Index (0–100)**.
 
-> **Note:** The score is an experimental behavioral indicator, not a medical or psychological diagnosis.
+The system is intended for technical experimentation and behavioral analysis. The score is **not a medical or psychological diagnosis**.
 
-## ⚙️ How It Works
+## Pipeline
 
 ```text
-🎥 Video
-   ↓
+Exam Video
+    │
+    ▼
 Frame Sampling & Resize
-   ↓
-👁️ YOLOv8 Face Detection
-   ↓
-📍 Centroid / Movement Tracking
-   ↓
-🙂 Facial Expression Analysis
-   ↓
-🧮 Anxiety Scoring
-   ↓
-📊 Trends & Session Report
+    │
+    ▼
+YOLOv8 Face Detection
+    │
+    ▼
+Centroid & Movement Tracking
+    │
+    ▼
+Facial Expression Analysis
+    │
+    ▼
+Temporal Feature Aggregation
+    │
+    ▼
+Anxiety Index + Visual Report
 ```
 
-### Core Metric
+### Movement Metric
 
-Face movement is calculated using centroid displacement:
+Face movement is estimated from the displacement of the detected face centroid between consecutive frames:
 
 ```text
 Movement = √((xₜ - xₜ₋₁)² + (yₜ - yₜ₋₁)²)
 ```
 
-The movement and expression signals are aggregated over time to produce the final **Anxiety Index**.
+Movement and expression signals are aggregated over time to calculate the session-level index.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
-| Area | Technology |
+| Component | Technology |
 |---|---|
 | Computer Vision | YOLOv8, OpenCV |
 | Deep Learning | PyTorch |
 | Data Processing | Pandas, NumPy |
 | Visualization | Matplotlib, Seaborn |
-| Web App | Streamlit |
+| Application | Streamlit |
 | Deployment | Streamlit Community Cloud |
 
-## 📂 Structure
+## Project Structure
 
 ```text
 Exam-Anxiety-Detector/
 ├── src/
-│   ├── tracker.py       # Face detection & movement tracking
+│   ├── tracker.py       # Face detection and movement tracking
 │   ├── emotion.py       # Facial-expression analysis
-│   ├── analyzer.py      # Anxiety scoring & telemetry
-│   └── visualizer.py    # Analytical plots
+│   ├── analyzer.py      # Anxiety scoring and telemetry
+│   └── visualizer.py    # Analytical visualization
 ├── app.py               # Streamlit application
-├── requirements.txt     # Dependencies
+├── requirements.txt     # Project dependencies
 └── README.md
 ```
 
-## 🚀 Run Locally
+## Run Locally
 
 ```bash
 git clone https://github.com/shubhumre777/Exam-Anxiety-Detector.git
@@ -90,23 +101,22 @@ source venv/bin/activate
 pip install -r requirements.txt
 streamlit run app.py
 ```
-## 👨‍💻 Developer
+
+## Developer
 
 **Shubh Umre**  
-AI Developer • Computer Vision Engineer • AIML Student
+AI Developer · Computer Vision Engineer · AIML Student
 
-Building practical applications in **AI, Machine Learning, Generative AI and Computer Vision**.
+Focused on building practical systems in **AI, Machine Learning, Generative AI and Computer Vision**.
 
-[![GitHub](https://img.shields.io/badge/GitHub-shubhumre777-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/shubhumre777)
+[![GitHub](https://img.shields.io/badge/GitHub-shubhumre777-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/shubhumre777)
 
-## 🤝 Contributions
+## Contributing
 
-Open to **contributions, ideas, bug fixes and improvements** in AI and Computer Vision.
-
-If you find the project useful, consider ⭐ **starring the repository**.
+Contributions are welcome. Feel free to open an issue or submit a pull request for improvements, bug fixes, documentation or new computer vision features.
 
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0D1117,50:172554,100:0D1117&height=100&section=footer&animation=twinkling" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0D1117,50:172554,100:0D1117&height=90&section=footer&animation=fadeIn" width="100%"/>
 
 </div>
