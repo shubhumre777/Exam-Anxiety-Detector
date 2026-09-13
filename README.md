@@ -90,13 +90,6 @@ source venv/bin/activate
 pip install -r requirements.txt
 streamlit run app.py
 ```
-
-## 🌐 Demo
-
-**Live:** https://exam-anxiety-detector-su.streamlit.app/
-
-**Source:** https://github.com/shubhumre777/Exam-Anxiety-Detector
-
 ## 👨‍💻 Developer
 
 **Shubh Umre**  
