@@ -1,19 +1,29 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=0D1117&height=180&section=header&text=EXAM%20ANXIETY%20%26%20PROCTORING%20AI&fontSize=31&fontColor=00E5FF&animation=fadeIn&stroke=00E5FF&strokeWidth=1&desc=Computer%20Vision%20Behavioral%20Analytics&descSize=16&descColor=9CA3AF&descAlignY=68" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&amp;color=0D1117&amp;height=180&amp;section=header&amp;text=EXAM%20ANXIETY%20%26%20PROCTORING%20AI&amp;fontSize=31&amp;fontColor=00E5FF&amp;animation=fadeIn&amp;stroke=00E5FF&amp;strokeWidth=1&amp;desc=Computer%20Vision%20Behavioral%20Analytics&amp;descSize=16&amp;descColor=9CA3AF&amp;descAlignY=68" width="100%"/>
 
 <br>
 
-[![Live App](https://img.shields.io/badge/LIVE%20APP-Streamlit-00A8E8?style=for-the-badge&logo=streamlit&logoColor=white)](https://exam-anxiety-detector-su.streamlit.app/)
-[![Repository](https://img.shields.io/badge/SOURCE-GitHub-161B22?style=for-the-badge&logo=github&logoColor=white)](https://github.com/shubhumre777/Exam-Anxiety-Detector)
-[![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![YOLOv8](https://img.shields.io/badge/YOLOv8-Face%20Detection-00E5FF?style=for-the-badge)](https://github.com/ultralytics/ultralytics)
-[![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)](https://pytorch.org/)
-[![License](https://img.shields.io/badge/License-MIT-F5C542?style=for-the-badge)](LICENSE)
+<a href="https://exam-anxiety-detector-su.streamlit.app/">
+<img src="https://img.shields.io/badge/OPEN%20LIVE%20APPLICATION-00A8E8?style=for-the-badge&amp;logo=streamlit&amp;logoColor=white" alt="Open Live Application"/>
+</a>
 
-<br>
+<br><br>
 
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=15&duration=3000&pause=1000&color=00E5FF&center=true&vCenter=true&width=720&lines=YOLOv8+Face+Detection;Temporal+Movement+Analysis;Facial+Expression+Signals;Anxiety+Index+%7C+0%E2%80%93100" alt="Project capabilities"/>
+<a href="https://github.com/shubhumre777/Exam-Anxiety-Detector">
+<img src="https://img.shields.io/badge/VIEW%20SOURCE%20CODE%20ON%20GITHUB-161B22?style=for-the-badge&amp;logo=github&amp;logoColor=white" alt="View Source Code"/>
+</a>
+
+<br><br>
+
+<img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&amp;logo=python&amp;logoColor=white" alt="Python"/>
+<img src="https://img.shields.io/badge/YOLOv8-Face%20Detection-00E5FF?style=for-the-badge" alt="YOLOv8"/>
+<img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&amp;logo=pytorch&amp;logoColor=white" alt="PyTorch"/>
+<img src="https://img.shields.io/badge/License-MIT-F5C542?style=for-the-badge" alt="MIT License"/>
+
+<br><br>
+
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&amp;weight=500&amp;size=15&amp;duration=3000&amp;pause=1000&amp;color=00E5FF&amp;center=true&amp;vCenter=true&amp;width=720&amp;lines=YOLOv8+Face+Detection;Temporal+Movement+Analysis;Facial+Expression+Signals;Anxiety+Index+%7C+0%E2%80%93100" alt="Project capabilities"/>
 
 </div>
 
@@ -21,9 +31,9 @@
 
 ## Overview
 
-**Exam Anxiety & Proctoring AI** is a computer vision application for analyzing recorded examination videos. It combines face detection, spatial movement tracking and facial-expression signals to generate an experimental **Anxiety Index (0–100)**.
+**Exam Anxiety &amp; Proctoring AI** is a computer vision application for analyzing recorded examination videos. It combines face detection, spatial movement tracking and facial-expression signals to generate an experimental **Anxiety Index (0–100)**.
 
-The system is intended for technical experimentation and behavioral analysis. The score is **not a medical or psychological diagnosis**.
+The score is intended for technical experimentation and behavioral analysis. It is **not a medical or psychological diagnosis**.
 
 ## Pipeline
 
@@ -31,13 +41,13 @@ The system is intended for technical experimentation and behavioral analysis. Th
 Exam Video
     │
     ▼
-Frame Sampling & Resize
+Frame Sampling &amp; Resize
     │
     ▼
 YOLOv8 Face Detection
     │
     ▼
-Centroid & Movement Tracking
+Centroid &amp; Movement Tracking
     │
     ▼
 Facial Expression Analysis
@@ -109,14 +119,12 @@ AI Developer · Computer Vision Engineer · AIML Student
 
 Focused on building practical systems in **AI, Machine Learning, Generative AI and Computer Vision**.
 
-[![GitHub](https://img.shields.io/badge/GitHub-shubhumre777-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/shubhumre777)
-
 ## Contributing
 
-Contributions are welcome. Feel free to open an issue or submit a pull request for improvements, bug fixes, documentation or new computer vision features.
+Contributions are welcome. Bug fixes, documentation improvements and new computer vision features are encouraged.
 
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0D1117,50:172554,100:0D1117&height=90&section=footer&animation=fadeIn" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&amp;color=0:0D1117,50:172554,100:0D1117&amp;height=90&amp;section=footer&amp;animation=fadeIn" width="100%"/>
 
 </div>
