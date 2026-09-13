@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=0D1117&height=200&section=header&text=EXAM%20ANXIETY%20%26%20PROCTORING%20AI&fontSize=32&fontColor=00E5FF&animation=fadeIn&fontAlignY=38&desc=Computer%20Vision%20Behavioral%20Analytics%20Engine&descSize=16&descColor=9CA3AF&descAlignY=68&stroke=00E5FF&strokeWidth=1" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rect&amp;color=0D1117&amp;height=200&amp;section=header&amp;text=EXAM%20ANXIETY%20%26%20PROCTORING%20AI&amp;fontSize=32&amp;fontColor=00E5FF&amp;animation=fadeIn&amp;fontAlignY=38&amp;desc=Computer%20Vision%20Behavioral%20Analytics%20Engine&amp;descSize=16&amp;descColor=9CA3AF&amp;descAlignY=68&amp;stroke=00E5FF&amp;strokeWidth=1" width="100%"/>
 
-<br>
+</div>
 
 <a href="https://exam-anxiety-detector-su.streamlit.app/">
 <img src="https://img.shields.io/badge/OPEN%20LIVE%20APPLICATION-00A8E8?style=for-the-badge&amp;logo=streamlit&amp;logoColor=white" alt="Open Live Application"/>
