@@ -1,10 +1,16 @@
+import os
 import cv2
 from ultralytics import YOLO
 
 class FaceTracker:
     def __init__(self):
-        # Load standard YOLOv8 nano model (fast and lightweight)
-        self.model = YOLO('yolov8n-face.pt') 
+        # Fallback mechanism for cloud deployment (Streamlit Cloud)
+        model_path = 'yolov8n-face.pt'
+        if not os.path.exists(model_path):
+            model_path = 'yolov8n.pt'  # Standard ultralytics model that auto-downloads on cloud
+            
+        # Load the model
+        self.model = YOLO(model_path) 
 
     def process_frame(self, frame):
         # Ask YOLO to find objects in the camera frame
@@ -19,7 +25,7 @@ class FaceTracker:
         face_crop = None
         center_pt = None
         
-        # If YOLO found at least one person
+        # If YOLO found at least one person/face
         if len(boxes) > 0:
             # Get coordinates for the first box
             x1, y1, x2, y2 = map(int, boxes[0][:4])
