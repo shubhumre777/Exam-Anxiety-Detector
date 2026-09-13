@@ -1,79 +1,119 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0d1117&customColor=true&height=200&section=header&text=Exam%20Anxiety%20&%20Proctoring%20AI&fontSize=32&fontColor=00FFFF&animation=fadeIn&stroke=30363d" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0D1117,50:172554,100:0D1117&height=210&section=header&text=EXAM%20ANXIETY%20%26%20PROCTORING%20AI&fontSize=32&fontColor=00FFFF&animation=twinkling&stroke=00FFFF&strokeWidth=1&desc=Computer%20Vision%20%7C%20Behavioral%20Analytics%20%7C%20Exam%20Monitoring&descSize=15&descColor=A0A0A0&descAlignY=65" width="100%"/>
 
-[![Streamlit App](https://img.shields.io/badge/Live%20Demo-Streamlit%20Cloud-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://exam-anxiety-detector-su.streamlit.app/)
+[![🚀 Live App](https://img.shields.io/badge/🚀_LIVE_APP-Streamlit_Cloud-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://exam-anxiety-detector-su.streamlit.app/)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![YOLOv8](https://img.shields.io/badge/YOLOv8-Face%20Detection-00FFFF?style=for-the-badge&logo=ultralytics&logoColor=black)](https://github.com/ultralytics/ultralytics)
-[![PyTorch](https://img.shields.io/badge/PyTorch-Deep%20Learning-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)](https://pytorch.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+[![YOLOv8](https://img.shields.io/badge/YOLOv8-Face_Detection-00FFFF?style=for-the-badge)](https://github.com/ultralytics/ultralytics)
+[![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)](https://pytorch.org/)
+[![MIT](https://img.shields.io/badge/License-MIT-F5C542?style=for-the-badge)](LICENSE)
 
-*An advanced computer vision application engineered to quantify candidate stress levels, monitor head movement dynamics, and automate academic proctoring integrity checking.*
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=16&duration=2800&pause=900&color=00FFFF&center=true&vCenter=true&width=700&lines=Video+Analytics;YOLOv8+Face+Detection;Movement+%26+Expression+Analysis;Temporal+Anxiety+Scoring" alt="Typing Animation"/>
 
 </div>
 
 ---
 
-## 🌐 Live Application
-Access the fully deployed cloud version here:
-👉 **[Exam Anxiety & Proctoring Detector Live](https://exam-anxiety-detector-su.streamlit.app/)**
+## 🎯 Overview
 
----
+**Exam Anxiety & Proctoring AI** analyzes recorded exam videos using computer vision to estimate an **Anxiety Index (0–100)** from observable movement, facial-expression signals, and spatial changes over time.
 
-## 🎯 Project Overview & Objective
-Traditional online exam proctoring relies heavily on intrusive live webcam feeds or binary tab-switching flags, which often fail to gauge a student's actual cognitive stress or subtle physical unease. 
+> **Note:** The score is an experimental behavioral indicator, not a medical or psychological diagnosis.
 
-This project bridges that gap by implementing an **AI-driven video analytics pipeline**. It processes recorded examination footage to compute a holistic **Anxiety Index (0–100)** based on physical fidget velocity, spatial positioning shifts, and facial emotion metrics over time.
+## ⚙️ How It Works
 
----
+```text
+🎥 Video
+   ↓
+Frame Sampling & Resize
+   ↓
+👁️ YOLOv8 Face Detection
+   ↓
+📍 Centroid / Movement Tracking
+   ↓
+🙂 Facial Expression Analysis
+   ↓
+🧮 Anxiety Scoring
+   ↓
+📊 Trends & Session Report
+```
 
-## ⚙️ Core System Workflow & Detection Metrics
+### Core Metric
 
-The application follows a structured, multi-stage processing pipeline to transform raw video into actionable behavioral insights:
+Face movement is calculated using centroid displacement:
 
-1. **Video Ingestion & Downscaling:**
-   * The user uploads an exam recording (`mp4`, `avi`, `mov`, `mkv`).
-   * Frames are dynamically read and downscaled to a standardized width ($420\text{px}$) to optimize processing speed and eliminate UI lag.
+```text
+Movement = √((xₜ - xₜ₋₁)² + (yₜ - yₜ₋₁)²)
+```
 
-2. **Facial Bounding & Centroid Mapping (`src/tracker.py`):**
-   * YOLOv8 detects the candidate's face, returning bounding box coordinates ($x_1, y_1, x_2, y_2$).
-   * The geometric center point of the face is calculated for every frame.
+The movement and expression signals are aggregated over time to produce the final **Anxiety Index**.
 
-3. **Fidget Velocity Calculation:**
-   * Movement is quantified by measuring the **Euclidean distance** between the face's center point in consecutive frames:
-     $$\text{Movement} = \sqrt{(x_t - x_{t-1})^2 + (y_t - y_{t-1})^2}$$
-   * High displacement spikes indicate restlessness or fidgeting.
+## 🛠️ Tech Stack
 
-4. **Emotion & Anxiety Indexing (`src/analyzer.py`):**
-   * Facial expressions are categorized, and movement metrics are weighted cumulatively.
-   * The system outputs a dynamic **Exam Anxiety Score out of 100** and generates trend graphs using Matplotlib/Seaborn.
+| Area | Technology |
+|---|---|
+| Computer Vision | YOLOv8, OpenCV |
+| Deep Learning | PyTorch |
+| Data Processing | Pandas, NumPy |
+| Visualization | Matplotlib, Seaborn |
+| Web App | Streamlit |
+| Deployment | Streamlit Community Cloud |
 
----
-
-## 🛠️ Comprehensive Tech Stack
-
-| Category | Technologies & Libraries | Purpose |
-| :--- | :--- | :--- |
-| **AI & Computer Vision** | `Ultralytics YOLOv8`, `PyTorch`, `OpenCV` | High-precision face bounding, spatial tracking, and inference execution. |
-| **Web Framework** | `Streamlit Community Cloud` | Interactive, responsive web interface and cloud deployment. |
-| **Data Processing** | `Pandas`, `NumPy` | Handling telemetry, tracking logs, and calculating statistical scores. |
-| **Data Visualization** | `Matplotlib`, `Seaborn` | Generating time-series analytical graphs and session summary reports. |
-| **Utilities** | `Python Standard Libraries (os, tempfile)` | Handling temporary video storage and local path management. |
-
----
-
-## 📂 Repository Structure
+## 📂 Structure
 
 ```text
 Exam-Anxiety-Detector/
-│
 ├── src/
-│   ├── __init__.py
-│   ├── tracker.py       # YOLOv8 face tracking, fallbacks & coordinate mapping
-│   ├── emotion.py     # Facial expression recognition pipeline
-│   ├── analyzer.py    # Temporal anxiety scoring and CSV logging engine
-│   └── visualizer.py  # Graph plotting & analytical trend generation
-│
-├── app.py             # Main Streamlit web app (Video upload, throttling & UI loop)
-├── requirements.txt   # Pinned production dependencies
-└── README.md          # Project Documentation
+│   ├── tracker.py       # Face detection & movement tracking
+│   ├── emotion.py       # Facial-expression analysis
+│   ├── analyzer.py      # Anxiety scoring & telemetry
+│   └── visualizer.py    # Analytical plots
+├── app.py               # Streamlit application
+├── requirements.txt     # Dependencies
+└── README.md
+```
+
+## 🚀 Run Locally
+
+```bash
+git clone https://github.com/shubhumre777/Exam-Anxiety-Detector.git
+cd Exam-Anxiety-Detector
+
+python -m venv venv
+
+# Windows
+venv\Scripts\activate
+
+# macOS / Linux
+source venv/bin/activate
+
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+## 🌐 Demo
+
+**Live:** https://exam-anxiety-detector-su.streamlit.app/
+
+**Source:** https://github.com/shubhumre777/Exam-Anxiety-Detector
+
+## 👨‍💻 Developer
+
+**Shubh Umre**  
+AI Developer • Computer Vision Engineer • AIML Student
+
+Building practical applications in **AI, Machine Learning, Generative AI and Computer Vision**.
+
+[![GitHub](https://img.shields.io/badge/GitHub-shubhumre777-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/shubhumre777)
+
+## 🤝 Contributions
+
+Open to **contributions, ideas, bug fixes and improvements** in AI and Computer Vision.
+
+If you find the project useful, consider ⭐ **starring the repository**.
+
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0D1117,50:172554,100:0D1117&height=100&section=footer&animation=twinkling" width="100%"/>
+
+</div>
