@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=10,20,30,40&height=220&section=header&text=EXAM%20ANXIETY%20%26%20PROCTORING%20AI&fontSize=34&fontColor=00FFFF&animation=scaling&fontAlignY=38&desc=Advanced%20Computer%20Vision%20Behavioral%20Analytics%20Engine&descSize=16&descColor=A0A0A0&stroke=00FFFF&strokeWidth=2" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0D1117&height=200&section=header&text=EXAM%20ANXIETY%20%26%20PROCTORING%20AI&fontSize=32&fontColor=00E5FF&animation=fadeIn&fontAlignY=38&desc=Computer%20Vision%20Behavioral%20Analytics%20Engine&descSize=16&descColor=9CA3AF&descAlignY=68&stroke=00E5FF&strokeWidth=1" width="100%">
 
 <br>
 
