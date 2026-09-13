@@ -10,22 +10,19 @@ from src.visualizer import generate_report
 
 st.set_page_config(page_title="Exam Anxiety Detector", page_icon="🧠", layout="centered")
 
-st.title("🧠 Exam Anxiety & Proctoring Detector (Video Upload)")
-st.write("Upload a recorded exam video to analyze student movement, emotions, and calculate an overall anxiety score.")
+st.title("🧠 Exam Anxiety & Proctoring Detector")
+st.write("Upload an exam video for smooth, lag-free asynchronous analysis.")
 
-# File uploader widget
 uploaded_file = st.file_uploader("Choose an exam video...", type=["mp4", "avi", "mov", "mkv"])
 
 if uploaded_file is not None:
-    # Save uploaded video to a temporary file so OpenCV can read it
     tfile = tempfile.NamedTemporaryFile(delete=False, suffix='.mp4')
     tfile.write(uploaded_file.read())
     video_path = tfile.name
 
     st.video(video_path)
     
-    if st.button("🚀 Start Video Analysis", type="primary"):
-        # Initialize AI components fresh for this session
+    if st.button("🚀 Start Optimized Video Analysis", type="primary"):
         tracker = FaceTracker()
         emotion_detector = EmotionDetector()
         analyzer = AnxietyAnalyzer()
@@ -33,15 +30,19 @@ if uploaded_file is not None:
 
         cap = cv2.VideoCapture(video_path)
         
-        # UI placeholders for live progress during processing
         st_frame = st.empty()
-        st_score = st.empty()
-        st_emotion = st.empty()
-        st_fidget = st.empty()
+        metrics_container = st.container()
+        
+        with metrics_container:
+            col1, col2, col3 = st.columns(3)
+            m_score = col1.empty()
+            m_emotion = col2.empty()
+            m_fidget = col3.empty()
         
         progress_bar = st.progress(0)
         total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
         current_frame_idx = 0
+        skip_counter = 0
 
         while cap.isOpened():
             ret, frame = cap.read()
@@ -49,11 +50,12 @@ if uploaded_file is not None:
                 break
             
             current_frame_idx += 1
+            skip_counter += 1
             
-            # Optional: Optimize resolution for speed
+            # Performance optimization: Resize frame for fast processing
             h, w, _ = frame.shape
-            if w > 480:
-                scale = 480 / w
+            if w > 420:
+                scale = 420 / w
                 frame = cv2.resize(frame, (int(w * scale), int(h * scale)))
 
             # AI Processing Pipeline
@@ -69,31 +71,29 @@ if uploaded_file is not None:
             analyzer.log_data(movement, emotion)
             anxiety_score = analyzer.calculate_anxiety_score()
             
-            # Update metrics on screen
-            st_score.metric("Current Anxiety Score", f"{anxiety_score}/100")
-            st_emotion.metric("Detected Emotion", emotion)
-            st_fidget.metric("Fidget Speed", movement)
+            # Frame skipping for UI rendering to completely eliminate lag (update UI every 2 frames)
+            if skip_counter % 2 == 0 or current_frame_idx == 1:
+                m_score.metric("Anxiety Score", f"{anxiety_score}/100")
+                m_emotion.metric("Emotion", emotion)
+                m_fidget.metric("Fidget Speed", movement)
+                
+                annotated_rgb = cv2.cvtColor(annotated_frame, cv2.COLOR_BGR2RGB)
+                st_frame.image(annotated_rgb, channels="RGB")
             
-            # Convert OpenCV BGR to RGB for Streamlit display (width parameter removed to prevent version errors)
-            annotated_rgb = cv2.cvtColor(annotated_frame, cv2.COLOR_BGR2RGB)
-            st_frame.image(annotated_rgb, channels="RGB")
-            
-            # Update progress bar
             if total_frames > 0:
                 progress_bar.progress(min(current_frame_idx / total_frames, 1.0))
 
         cap.release()
-        st.success("✅ Video Analysis Complete!")
+        st.success("✅ Analysis Completed Smoothly!")
 
-        # Generate and display final report graph
-        with st.spinner("Generating final analytical report..."):
+        with st.spinner("Generating analytical session report..."):
             saved_file_path = analyzer.save_log()
             generate_report(saved_file_path)
             graph_path = saved_file_path.replace('.csv', '.png')
             
             st.subheader("📊 Final Session Report")
             if os.path.exists(graph_path):
-                st.image(graph_path, caption="Anxiety & Fidget Analysis Over Time")
+                st.image(graph_path, caption="Anxiety & Fidget Trends Over Time")
             
             final_score = analyzer.calculate_anxiety_score()
             st.info(f"🎯 **Final Exam Anxiety Score:** {final_score} / 100")
