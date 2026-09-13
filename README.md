@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=rect&amp;color=0D1117&amp;height=180&amp;section=header&amp;text=EXAM%20ANXIETY%20%26%20PROCTORING%20AI&amp;fontSize=31&amp;fontColor=00E5FF&amp;animation=fadeIn&amp;stroke=00E5FF&amp;strokeWidth=1&amp;desc=Computer%20Vision%20Behavioral%20Analytics&amp;descSize=16&amp;descColor=9CA3AF&amp;descAlignY=68" width="100%"/>
+<img src="[https://capsule-render.vercel.app/api?type=rect&amp;color=0D1117&amp;height=180&amp;section=header&amp;text=EXAM%20ANXIETY%20%26%20PROCTORING%20AI&amp;fontSize=31&amp;fontColor=00E5FF&amp;animation=fadeIn&amp;stroke=00E5FF&amp;strokeWidth=1&amp;desc=Computer%20Vision%20Behavioral%20Analytics&amp;descSize=16&amp;descColor=9CA3AF&amp;descAlignY=68" width="100%](https://capsule-render.vercel.app/api?type=rect&color=gradient&customColor_list=10,20,30,40&height=220&section=header&text=EXAM%20ANXIETY%20&%20PROCTORING%20AI&fontSize=34&fontColor=00FFFF&animation=scaling&fontAlignY=38&desc=Advanced%20Computer%20Vision%20Behavioral%20Analytics%20Engine&descSize=16&descColor=A0A0A0&stroke=00FFFF&strokeWidth=2%22%20width=%22100%%22/%3E)"/>
 
 <br>
 
