@@ -97,5 +97,6 @@ if uploaded_file is not None:
             
             final_score = analyzer.calculate_anxiety_score()
             st.info(f"🎯 **Final Exam Anxiety Score:** {final_score} / 100")
-            if final_score == 0 :
-                st.error("Please Upload the file again and Try Analyzing again") 
+
+            if final_score == 0:
+                st.error("Please upload the file again and try analyzing.")
