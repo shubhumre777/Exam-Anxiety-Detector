@@ -56,8 +56,8 @@ These signals are combined into an experimental **Anxiety Index (0–100)**.
 
 ```text
                     🎥 EXAM VIDEO
-                          │
-                          ▼
+                      │
+                      ▼
               ┌─────────────────────┐
               │ Frame Sampling      │
               │ Resize & Preprocess │
