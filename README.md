@@ -284,18 +284,6 @@ Anxiety Index
 Visual Analytics
 ```
 
----
-
-## 🔮 Future Improvements
-
-* 🎥 Real-time webcam analysis
-* ✋ MediaPipe-based landmark tracking
-* 👀 Eye-gaze & head-pose analysis
-* 🧍 Multi-person tracking
-* 📡 Real-time behavioral telemetry
-* 🤖 Improved temporal ML models
-* 📈 Personalized baseline calibration
-* 🔐 Privacy-focused local processing
 
 ---
 
