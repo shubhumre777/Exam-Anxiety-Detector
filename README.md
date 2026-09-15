@@ -1,34 +1,38 @@
 <div align="center">
 
-<!-- HERO -->
+<img src="https://raw.githubusercontent.com/DenverCoder1/readme-typing-svg/main/demo/demo.gif" width="700"/>
 
-<img src="https://capsule-render.vercel.app/api?type=waving&height=230&section=header&text=EXAM%20ANXIETY%20%26%20PROCTORING%20AI&fontSize=34&fontColor=FFFFFF&fontAlignY=40&desc=Computer%20Vision%20%7C%20Behavioral%20Analytics%20%7C%20AI&descSize=17&descColor=E0F2FE&descAlignY=62&gradient=true&animation=fadeIn" width="100%"/>
+<br><br>
+
+<h1>🧠 EXAM ANXIETY & PROCTORING AI</h1>
+
+<h3>Computer Vision • Behavioral Analytics • Deep Learning</h3>
+
+<p>
+  <i>Turning examination video into interpretable behavioral insights.</i>
+</p>
 
 <br>
 
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=2800&pause=900&color=00E5FF&center=true&vCenter=true&width=750&lines=AI-powered+Exam+Behavior+Analysis;Computer+Vision+%2B+Deep+Learning;Movement+%2B+Facial+Expression+Analytics;Turning+Video+Signals+into+Behavioral+Insights" alt="Typing animation"/>
-
-<br><br>
-
 <a href="https://exam-anxiety-detector-su.streamlit.app/">
-<img src="https://img.shields.io/badge/%E2%96%B6%20LIVE%20APPLICATION-00C2FF?style=for-the-badge&logo=streamlit&logoColor=white" />
+  <img src="https://img.shields.io/badge/🚀%20LIVE%20APPLICATION-00C2FF?style=for-the-badge&labelColor=111827"/>
 </a>
 
 <a href="https://github.com/shubhumre777/Exam-Anxiety-Detector">
-<img src="https://img.shields.io/badge/%E2%98%85%20SOURCE%20CODE-18181B?style=for-the-badge&logo=github&logoColor=white" />
+  <img src="https://img.shields.io/badge/⭐%20SOURCE%20CODE-18181B?style=for-the-badge&logo=github&logoColor=white"/>
 </a>
 
 <br><br>
 
-<img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white"/>
-<img src="https://img.shields.io/badge/YOLOv8-Face%20Detection-FF6B35?style=flat-square"/>
-<img src="https://img.shields.io/badge/PyTorch-Deep%20Learning-EE4C2C?style=flat-square&logo=pytorch&logoColor=white"/>
-<img src="https://img.shields.io/badge/OpenCV-Computer%20Vision-5C3EE8?style=flat-square&logo=opencv&logoColor=white"/>
-<img src="https://img.shields.io/badge/Streamlit-App-FF4B4B?style=flat-square&logo=streamlit&logoColor=white"/>
+<img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
+<img src="https://img.shields.io/badge/YOLOv8-Face%20Detection-FF6B35?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/PyTorch-Deep%20Learning-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white"/>
+<img src="https://img.shields.io/badge/OpenCV-Computer%20Vision-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white"/>
+<img src="https://img.shields.io/badge/Streamlit-App-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white"/>
 
 <br><br>
 
-<img src="https://komarev.com/ghpvc/?username=shubhumre777&repo=Exam-Anxiety-Detector&color=00E5FF&style=flat-square&label=PROJECT+VIEWS"/>
+<img src="https://komarev.com/ghpvc/?username=shubhumre777&repo=Exam-Anxiety-Detector&style=flat-square&color=00C2FF&label=PROJECT+VIEWS"/>
 
 </div>
 
