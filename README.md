@@ -62,38 +62,38 @@ These signals are combined into an experimental **Anxiety Index (0–100)**.
               │ Frame Sampling      │
               │ Resize & Preprocess │
               └──────────┬──────────┘
-                         │
-                         ▼
+                      │
+                      ▼
               ┌─────────────────────┐
               │   YOLOv8 Face       │
               │     Detection       │
               └──────────┬──────────┘
-                         │
-                         ▼
+                      │
+                      ▼
               ┌─────────────────────┐
               │ Centroid Tracking   │
               │ Movement Analysis   │
               └──────────┬──────────┘
-                         │
-                         ▼
+                      │
+                      ▼
               ┌─────────────────────┐
               │ Facial Expression   │
               │     Analysis        │
               └──────────┬──────────┘
-                         │
-                         ▼
+                      │
+                      ▼
               ┌─────────────────────┐
               │ Temporal Feature    │
               │    Aggregation      │
               └──────────┬──────────┘
-                         │
-                         ▼
+                      │
+                      ▼
                 ┌────────────────┐
                 │ ANXIETY INDEX  │
                 │      0–100     │
                 └────────┬───────┘
-                         │
-                         ▼
+                      │
+                      ▼
                 📊 VISUAL REPORT
 ```
 
