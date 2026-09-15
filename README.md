@@ -106,8 +106,7 @@ These signals are combined into an experimental **Anxiety Index (0–100)**.
 The system tracks changes in the detected face position between consecutive frames.
 
 ```text
-Movement =
-√((xₜ - xₜ₋₁)² + (yₜ - yₜ₋₁)²)
+Movement = √((xₜ - xₜ₋₁)² + (yₜ - yₜ₋₁)²)
 ```
 
 Movement signals are aggregated over time and combined with expression-related features to produce the session-level behavioral index.
