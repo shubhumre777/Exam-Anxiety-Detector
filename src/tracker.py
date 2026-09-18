@@ -5,7 +5,6 @@ from ultralytics import YOLO
 class FaceTracker:
     def __init__(self):
         try:
-            # CHANGED: Pointing directly to your local face weights file
             self.model = YOLO('yolov8n-face.pt')
         except Exception as e:
             print(f"Error loading YOLO face model: {e}")
