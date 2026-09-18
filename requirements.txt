@@ -8,3 +8,5 @@ matplotlib
 seaborn
 Pillow
 numpy
+transformers
+omegaconf
