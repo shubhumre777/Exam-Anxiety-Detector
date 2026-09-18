@@ -4,12 +4,11 @@ from ultralytics import YOLO
 
 class FaceTracker:
     def __init__(self):
-        # Use standard model and handle any serialization/loading issues gracefully
         try:
+            # CHANGED: Pointing directly to your local face weights file
             self.model = YOLO('yolov8n-face.pt')
         except Exception as e:
-            print(f"Error loading YOLO model: {e}")
-            # Fallback to an alternative or handle it
+            print(f"Error loading YOLO face model: {e}")
             self.model = None
 
     def process_frame(self, frame):
