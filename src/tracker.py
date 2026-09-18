@@ -6,7 +6,7 @@ class FaceTracker:
     def __init__(self):
         # Use standard model and handle any serialization/loading issues gracefully
         try:
-            self.model = YOLO('yolov8n-face.pt')
+            self.model = YOLO('yolov8n.pt')
         except Exception as e:
             print(f"Error loading YOLO model: {e}")
             # Fallback to an alternative or handle it
