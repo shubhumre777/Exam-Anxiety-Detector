@@ -1,6 +1,5 @@
 streamlit
 opencv-python-headless
-opencv
 ultralytics
 torch
 torchvision
