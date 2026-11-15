@@ -44,7 +44,7 @@
 
 * 👤 Face movement
 * 🔄 Fidgeting / movement intensity
-* 🙂 Facial-expression signals
+* 🧪 Experimental facial-expression module (not validated for reliable emotion classification)
 * 📈 Temporal behavioral patterns
 * 🎯 Session-level behavioral score
 
@@ -81,8 +81,8 @@ These signals are combined into an experimental **Anxiety Index (0–100)**.
                       │
                       ▼
               ┌─────────────────────┐
-              │ Facial Expression   │
-              │     Analysis        │
+              │ Experimental       │
+              │ Expression Module  │
               └──────────┬──────────┘
                       │
                       ▼
@@ -289,6 +289,13 @@ Visual Analytics
 
 
 ---
+
+## Model status and performance claims
+
+- The face detector and centroid-based movement tracking are implemented in the current pipeline.
+- The CNN architecture in `src/emotion.py` is initialized without loading trained checkpoint weights. Its emotion labels are therefore **not validated predictions** and must not be presented as a trained facial-expression classifier.
+- The current anxiety index code combines movement speed with those emotion labels. Until a trained and evaluated checkpoint is added, the index is an experimental software output—not a validated measure of anxiety or emotion.
+- The repository does not include a reproducible CPU/GPU latency or FPS benchmark report. Performance figures should not be claimed until measured with a documented device, input resolution, warm-up, frame-sampling configuration, and repeatable benchmark.
 
 ## ⚠️ Limitations
 
